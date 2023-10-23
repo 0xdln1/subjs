@@ -108,6 +108,7 @@ func (s *SubJS) fetch(urls <-chan string, results chan string) {
 			js, _ := s.Attr("src")
 			if js != "" {
 				if strings.HasPrefix(js, "http://") || strings.HasPrefix(js, "https://") {
+					js := fmt.Sprintf("%s %s",u, js)
 					results <- js
 				} else if strings.HasPrefix(js, "//") {
 					js := fmt.Sprintf("%s %s:%s",u, u.Scheme, js)
